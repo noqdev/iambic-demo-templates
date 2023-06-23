@@ -1,0 +1,15 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+access_rules:
+  - groups:
+      - administrators
+    included_orgs:
+      - o-7hta7xrm1f
+identifier: AdministratorAccess
+properties:
+  name: AdministratorAccess
+  managed_policies:
+    - arn: arn:aws:iam::aws:policy/AdministratorAccess
+  session_duration: PT1H
+  tags:
+    - key: test
+      value: tag

@@ -1,0 +1,22 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - aws-iambic-demo-site-staging
+identifier: AWSReservedSSO_AdministratorAccess_6bcd5a26e67ae5dd
+properties:
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRoleWithSAML
+          - sts:TagSession
+        condition:
+          StringEquals:
+            SAML:aud: https://signin.aws.amazon.com/saml
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::{{var.account_id}}:saml-provider/AWSSSO_6b6bd0575fc623dd_DO_NOT_DELETE
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
+  max_session_duration: 43200
+  path: /aws-reserved/sso.amazonaws.com/
+  role_name: AWSReservedSSO_AdministratorAccess_6bcd5a26e67ae5dd

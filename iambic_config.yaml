@@ -1,0 +1,40 @@
+template_type: NOQ::Core::Config
+version: '1'
+aws:
+  accounts:
+    - account_id: '988413270853'
+      account_name: iambic-demo-site-dev
+      iambic_managed: read_and_write
+      org_id: o-7hta7xrm1f
+      spoke_role_arn: arn:aws:iam::988413270853:role/IambicSpokeRole
+    - account_id: '194349255503'
+      account_name: iambic-demo-site-production
+      iambic_managed: read_and_write
+      org_id: o-7hta7xrm1f
+      spoke_role_arn: arn:aws:iam::194349255503:role/IambicSpokeRole
+      variables:
+        - key: owner
+          value: iambic-demo-site-production@noq.dev
+        - key: description
+          value: CreatedforIAMbicDemosite
+    - account_id: '662889029265'
+      account_name: iambic-demo-site-org-account
+      iambic_managed: read_and_write
+      org_id: o-7hta7xrm1f
+      spoke_role_arn: arn:aws:iam::662889029265:role/IambicSpokeRole
+    - account_id: '607479558832'
+      account_name: aws-iambic-demo-site-staging
+      iambic_managed: read_and_write
+      org_id: o-7hta7xrm1f
+      spoke_role_arn: arn:aws:iam::607479558832:role/IambicSpokeRole
+      variables:
+        - key: Description
+          value: CreatedforIAMbicdemosite
+  organizations:
+    - default_rule:
+        iambic_managed: read_and_write
+      hub_role_arn: arn:aws:iam::662889029265:role/IambicHubRole
+      identity_center:
+        region: us-east-1
+      org_account_id: '662889029265'
+      org_id: o-7hta7xrm1f
