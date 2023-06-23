@@ -34,7 +34,6 @@ aws:
     - default_rule:
         iambic_managed: read_and_write
       hub_role_arn: arn:aws:iam::662889029265:role/IambicHubRole
-      identity_center:
-        region: us-east-1
+      identity_center: {}
       org_account_id: '662889029265'
       org_id: o-7hta7xrm1f
