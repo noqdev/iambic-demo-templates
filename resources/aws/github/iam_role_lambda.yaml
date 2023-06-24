@@ -3,7 +3,7 @@ included_accounts:
   - iambic-demo-site-org-account
 identifier: iambic_github_app_lambda_execution
 properties:
-  description: Github App Lambda Execution
+  description: Github App Lambda Execution Role
   assume_role_policy_document:
     statement:
       - action: sts:AssumeRole
