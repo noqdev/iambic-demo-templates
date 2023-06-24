@@ -1,0 +1,33 @@
+template_type: NOQ::AWS::Organizations::SCP
+account_id: '662889029265'
+identifier: Block all non-read IAM/SSO actions for everyone except AWS SSO and root user
+org_id: o-7hta7xrm1f
+properties:
+  description: This policy blocks all actions that do not originate from the root user, or an AWS SSO managed role.
+  policy_document:
+    statement:
+      - condition:
+          StringNotLike:
+            aws:PrincipalArn:
+              - arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_*
+              - arn:aws:iam::*:root
+        effect: Deny
+        not_action:
+          - iam:Get*
+          - iam:List*
+          - sso-directory:Describe*
+          - sso-directory:Get*
+          - sso-directory:List*
+          - sso:Describe*
+          - sso:Get*
+          - sso:List*
+          - sso:Search*
+        resource:
+          - '*'
+  policy_id: p-45lra5ph
+  policy_name: Block all non-read IAM/SSO actions for everyone except AWS SSO and root user
+  targets:
+    accounts:
+      - iambic-demo-site-dev
+    roots:
+      - r-97cv
